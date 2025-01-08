@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
 # Metadata labels
-LABEL org.opencontainers.image.source="https://github.com/westsurname/scripts"
+LABEL org.opencontainers.image.source="https://github.com/robrtb/blackhole_scripts"
 LABEL org.opencontainers.image.description="Docker image for the plex_request_nginx service"
 
 # Install required packages
