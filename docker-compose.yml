@@ -2,7 +2,7 @@ x-blackhole: &blackhole
   build: 
     context: .
     dockerfile: Dockerfile.blackhole
-  image: ghcr.io/westsurname/scripts/blackhole:latest
+  image: ghcr.io/robrtb/blackhole_scripts/blackhole:latest
   pull_policy: always
   user: "${PUID:-}${PGID:+:${PGID}}"
   env_file:
@@ -13,7 +13,7 @@ x-repair: &repair
   build: 
     context: .
     dockerfile: Dockerfile.scripts
-  image: ghcr.io/westsurname/scripts/scripts:latest
+  image: ghcr.io/robrtb/blackhole_scripts/scripts:latest
   pull_policy: always
   command: python repair.py --no-confirm
   env_file:
@@ -141,7 +141,7 @@ services:
       context: .
       dockerfile: Dockerfile.watchlist
     container_name: watchlist_service
-    image: ghcr.io/westsurname/scripts/watchlist:latest
+    image: ghcr.io/robrtb/blackhole_scripts/watchlist:latest
     pull_policy: always
     volumes:
       - ./shared/tokens.json:/app/shared/tokens.json
@@ -155,7 +155,7 @@ services:
       context: .
       dockerfile: Dockerfile.plex_authentication
     container_name: plex_authentication_service
-    image: ghcr.io/westsurname/scripts/plex_authentication:latest
+    image: ghcr.io/robrtb/blackhole_scripts/plex_authentication:latest
     pull_policy: always
     volumes:
       - ./shared/tokens.json:/app/shared/tokens.json
@@ -170,7 +170,7 @@ services:
       context: .
       dockerfile: Dockerfile.plex_request
     container_name: plex_request_service
-    image: ghcr.io/westsurname/scripts/plex_request:latest
+    image: ghcr.io/robrtb/blackhole_scripts/plex_request:latest
     pull_policy: always
     volumes:
       - ./shared/tokens.json:/app/shared/tokens.json
@@ -185,7 +185,7 @@ services:
       context: .
       dockerfile: Dockerfile.plex_request_nginx
     container_name: plex_request_nginx_service
-    image: ghcr.io/westsurname/scripts/plex_request_nginx:latest
+    image: ghcr.io/robrtb/blackhole_scripts/plex_request_nginx:latest
     pull_policy: always
     volumes:
       - ${PLEX_SERVER_PATH}:/plex:ro
